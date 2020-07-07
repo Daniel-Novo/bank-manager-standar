@@ -46,7 +46,11 @@
     </resources>
 </build>
   <dependencies>
-
+ <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${logback.version}</version>
+    </dependency>
     <dependency>
         <groupId>com.ontimize</groupId>
         <artifactId>bank-manager-common</artifactId>
@@ -56,6 +60,11 @@
         <groupId>hsqldb</groupId>
         <artifactId>hsqldb</artifactId>
         <version>${hsqldb.version}</version>
+    </dependency>
+      <dependency>
+        <groupId>com.ontimize</groupId>
+        <artifactId>ontimize-license</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
     </dependency>
    
 </dependencies>
@@ -104,5 +113,24 @@
             </plugins>
             </build>
    </profile>
+   <profile>
+        <id>run_server</id>
+        <build>
+            <plugins>
+                
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.2.1</version>
+                    <configuration>
+                        <mainClass>org.bank.manager.server.ProjectServerLauncher</mainClass>
+                        <arguments>
+                            <argument>org/bank/manager/server/conf/server.properties</argument>
+                        </arguments>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
 </profiles>
 </project>
