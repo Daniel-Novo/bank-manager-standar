@@ -1,0 +1,39 @@
+<MainApplication title="Ontimize Training"
+	splash="com/ontimize/gui/images/logoimatia.gif;com/ontimize/gui/images/logoimatiainf.gif"
+	loginicon="com/ontimize/gui/images/loginiconimatia.jpg"
+	icon="org/bank/manager/client/images/ontimize16x16.png"
+	preferences="OntimizeTraining.conf" logintext="session_start"
+	resources="org.bank.manager.client.i18n.bundle" locale="es_ES"
+	encrypt="no">
+	<!-- Application configuration params -->
+	<ReferenceLocator remotelocatorname="BankManager"
+		local="false" class="com.ontimize.locator.PermissionReferenceLocator"
+		packageorhostname="localhost" port="49015"
+		checkservermessagesperiod="4000" ClientPermissionColumn="XMLCLIENT" />
+	<Menu archive="menu/menu.xml" />
+	<MenuListener
+		class="org.bank.manager.client.menu.AppMenuListener" />
+	<Toolbar archive="toolbar/toolbar.xml" />
+	<ToolbarListener
+		class="com.ontimize.gui.DefaultToolBarListener" />
+	<FormManager id="Managerabout"
+		form="modules/administration/formabout.xml"
+		imanager="com.ontimize.gui.BasicInteractionManager" />
+	<FormManager id="Managerusers"
+		form="modules/administration/formusers.xml"
+		imanager="com.ontimize.gui.BasicInteractionManager"
+		tree="modules/administration/treemanagerusers.xml"></FormManager>
+	<FormManager id="Manageraccounts"
+		form="modules/management/formaccounts.xml"
+		imanager="org.bank.manager.client.modules.management.IMAccounts"
+		tree="modules/management/treemanageraccounts.xml"></FormManager>
+	<FormManager id="Managercustomers"
+		form="modules/management/formcustomers.xml"
+		imanager="org.bank.manager.client.modules.management.IMCustomers"
+		tree="modules/management/treemanagercustomers.xml">
+		<FManager form="formaccounts.xml" fmid="Manageraccounts" />
+	</FormManager>
+	<FormManager id="Managerprofiles"
+		form="modules/administration/formprofiles.xml"
+		imanager="com.ontimize.gui.BasicInteractionManager"></FormManager>
+</MainApplication>
